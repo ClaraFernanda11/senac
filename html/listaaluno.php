@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-
 <body>
     <div class="container">
         <div class="row">
@@ -25,7 +24,6 @@
         </div>
         <div class="row">
             <div class="col-12">
-
                 <div class="card">
                     <div class="card-header">
                         <a href="/aluno.php" class="btn btn-outline-success">
@@ -106,14 +104,11 @@
                             </tbody>
                         </table>
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>
     <script src="/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 </body>
-
 </html>

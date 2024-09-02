@@ -1,3 +1,14 @@
+<?php
+$id = '';
+$acao = '';
+if (isset($_GET['id']) and !empty($_GET['id'])) {
+    $_GET['id'];
+    $acao = 'e';
+} else {
+    $id = '';
+    $acao = 'c';
+}
+?>
 <DOCTYPE html>
     <html lang="pt-BR">
 
@@ -36,6 +47,8 @@
                                 </div>
                             </div>
                             <form id="form">
+                                <input type="text" name="id" id="id" value="<?php echo $id; ?>">
+                                <input type="text" name="acao" id="acao">
                                 <div class="form-floating mb-3">
                                     <input
                                         type="text"
@@ -44,6 +57,32 @@
                                         name="nome"
                                         placeholder="">
                                     <label for="floatingInput">Digite por favor seu nome *</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="CPF"
+                                        name="CPF"
+                                        placeholder="">
+                                    <label for="floatingInput">Digite por favor seu CPF</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="RG"
+                                        name="RG"
+                                        placeholder="">
+                                    <Label for="floatingInput">Digite por favor seu RG</Label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input  
+                                    type="date"
+                                    class="form-control"
+                                    id="data_nascimento"
+                                    name="data_nascimento">
+                                    <label for="floatingInput">Digite por favor sua data de nascimento</label>
                                 </div>
                             </form>
                         </div>
