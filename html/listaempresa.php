@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Professor</title>
+    <title>Lista de Empresa</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
-    <div class="container">
+<div class="container">
         <div class="row">
             <div class="col-12">
                 <nav aria-label="breadcrumb">
@@ -26,7 +25,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <a href="/professor.php" class="btn btn-outline-success">
+                        <a href="/empresa.php" class="btn btn-outline-success">
                             <i class="fas fa-plus"></i>
                             Cadastro
                         </a>
@@ -35,25 +34,19 @@
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>Código</th>
-                                    <th>Nome</th>
-                                    <th>CPF</th>
-                                    <th>RG</th>
+                                    <th>Nome fantasia</th>
+                                    <th>CNPJ</th>
                                     <th>Data nascimento</th>
-                                    <th>Ação</th>
+                                    <th>Incrição Estadual</th>
                                 </tr>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
+                                <td>1</td>
                                     <td>WILTON WILL DE PAULO</td>
-                                    <td>000.000.000-00</td>
-                                    <td>12332112</td>
+                                    <td>0</td>
                                     <td>10/10/2008</td>
+                                    <td>0</td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="/professor.php?id=1" class="btn btn-outline-warning">
+                                            <a href="/empresa.php?id=1" class="btn btn-outline-warning">
                                                 <i class="fas fa-edit"> </i>
                                                 Editar
                                             </a>
@@ -67,12 +60,12 @@
                                 <tr>
                                     <td>2</td>
                                     <td>Lucas Pereira Reinaldo</td>
-                                    <td>000.000.000-01</td>
-                                    <td>12332113</td>
-                                    <td>10/10/2008</td>
+                                    <td>1</td>
+                                    <td>6/2/1999</td>
+                                    <td>1</td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="/professor.php?id=2" class="btn btn-outline-warning">
+                                            <a href="/empresa.php?id=2" class="btn btn-outline-warning">
                                                 <i class="fas fa-edit"> </i>
                                                 Editar
                                             </a>
@@ -86,12 +79,12 @@
                                 <tr>
                                     <td>3</td>
                                     <td>Clara Fernanda Nuni Rodrigues</td>
-                                    <td>000.000.000-02</td>
-                                    <td>15975389</td>
+                                    <td>2</td>
                                     <td>29/01/2008</td>
+                                    <td>2</td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic exemple">
-                                        <a href="/professor.php?id=2" class="btn btn-outline-warning">
+                                        <a href="/empresa.php?id=2" class="btn btn-outline-warning">
                                                 <i class="fas fa-edit"> </i>
                                                 Editar
                                             </a>
@@ -114,3 +107,7 @@
 </body>
 </html>
                          
+
+    
+</body>
+</html>

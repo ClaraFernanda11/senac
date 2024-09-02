@@ -2,7 +2,7 @@
 $id = '';
 $acao = '';
 if (isset($_GET['id']) and !empty($_GET['id'])) {
-    
+
     $id = $_GET['id'];
     $acao = 'e';
 } else {
@@ -16,7 +16,7 @@ if (isset($_GET['id']) and !empty($_GET['id'])) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cadastro e edição de aluno</title>
+        <title>Cadastro e edição de turma</title>
         <link rel="stylesheet" href="/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </head>
@@ -28,8 +28,8 @@ if (isset($_GET['id']) and !empty($_GET['id'])) {
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Início</a></li>
-                            <li class="breadcrumb-item"><a href="/listaaluno.php">Lista de aluno</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Cadastro e edição de alunos</li>
+                            <li class="breadcrumb-item"><a href="/listaturma.php">Lista de Turma</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Cadastro e edição de turma</li>
                         </ol>
                     </nav>
                 </div>
@@ -38,7 +38,7 @@ if (isset($_GET['id']) and !empty($_GET['id'])) {
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Cadastro e edição de aluno</h3>
+                            <h3>Cadastro e edição de turma</h3>
                         </div>
                         <div class="card-body">
                             <div class="col-12">
@@ -52,44 +52,36 @@ if (isset($_GET['id']) and !empty($_GET['id'])) {
                                 <input type="hidden" name="acao" id="acao" value="<?php echo $acao; ?>">
                                 <div class="form-floating mb-3">
                                     <input
-                                        type="text"
+                                        type="number"
                                         class="form-control"
-                                        id="nome"
-                                        name="nome"
+                                        id="quantidade_de_alunos"
+                                        name="quantidade_de_alunos"
                                         placeholder="">
-                                    <label for="floatingInput">Digite por favor seu nome *</label>
+                                    <label for="floatingInput">Digite por favor a quantidade de alunos *</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input
-                                        type="text"
+                                        type="number"
                                         class="form-control"
-                                        id="CPF"
-                                        name="CPF"
+                                        id="data_de_inicio"
+                                        name="data_de_inicio"
                                         placeholder="">
-                                    <label for="floatingInput">Digite por favor seu CPF</label>
+                                    <label for="floatingInput">Digite por favor a data de inicio *</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input
-                                        type="text"
+                                        type="number"
                                         class="form-control"
-                                        id="RG"
-                                        name="RG"
+                                        id="data_de_fim"
+                                        name="data_de_fim"
                                         placeholder="">
-                                    <Label for="floatingInput">Digite por favor seu RG</Label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input  
-                                    type="date"
-                                    class="form-control"
-                                    id="data_nascimento"
-                                    name="data_nascimento">
-                                    <label for="floatingInput">Digite por favor sua data de nascimento</label>
+                                    <label for="floatingInput">Digite por favor a data de fim *</label>
                                 </div>
                             </form>
                         </div>
                         <div class="card-footer">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a href="/listaaluno.php" class="btn btn-outline-warning">
+                                <a href="/listaempresa.php" class="btn btn-outline-warning">
                                     <i class="fas fa-chevron-left"></i>
                                     Voltar
                                 </a>

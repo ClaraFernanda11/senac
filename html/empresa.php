@@ -16,7 +16,7 @@ if (isset($_GET['id']) and !empty($_GET['id'])) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cadastro e edição de aluno</title>
+        <title>Cadastro e edição de empresa</title>
         <link rel="stylesheet" href="/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </head>
@@ -28,8 +28,8 @@ if (isset($_GET['id']) and !empty($_GET['id'])) {
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Início</a></li>
-                            <li class="breadcrumb-item"><a href="/listaaluno.php">Lista de aluno</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Cadastro e edição de alunos</li>
+                            <li class="breadcrumb-item"><a href="/listaempresa.php">Lista de Empresa</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Cadastro e edição de empresa</li>
                         </ol>
                     </nav>
                 </div>
@@ -38,7 +38,7 @@ if (isset($_GET['id']) and !empty($_GET['id'])) {
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Cadastro e edição de aluno</h3>
+                            <h3>Cadastro e edição de empresa</h3>
                         </div>
                         <div class="card-body">
                             <div class="col-12">
@@ -54,28 +54,19 @@ if (isset($_GET['id']) and !empty($_GET['id'])) {
                                     <input
                                         type="text"
                                         class="form-control"
-                                        id="nome"
-                                        name="nome"
+                                        id="nome_fantasia"
+                                        name="nome_fantasia"
                                         placeholder="">
-                                    <label for="floatingInput">Digite por favor seu nome *</label>
+                                    <label for="floatingInput">Digite por favor seu nome fantasia *</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input
                                         type="text"
                                         class="form-control"
-                                        id="CPF"
-                                        name="CPF"
+                                        id="CNPJ"
+                                        name="CNPJ"
                                         placeholder="">
-                                    <label for="floatingInput">Digite por favor seu CPF</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="RG"
-                                        name="RG"
-                                        placeholder="">
-                                    <Label for="floatingInput">Digite por favor seu RG</Label>
+                                    <label for="floatingInput">Digite por favor seu CNPJ</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input  
@@ -85,11 +76,20 @@ if (isset($_GET['id']) and !empty($_GET['id'])) {
                                     name="data_nascimento">
                                     <label for="floatingInput">Digite por favor sua data de nascimento</label>
                                 </div>
+                                <div class="form-floating mb-3">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="inscricao_estadual"
+                                        name="inscricao_estadual"
+                                        placeholder="">
+                                    <Label for="floatingInput">Digite por favor sua inscricao estadual</Label>
+                                </div>
                             </form>
                         </div>
                         <div class="card-footer">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a href="/listaaluno.php" class="btn btn-outline-warning">
+                                <a href="/listaempresa.php" class="btn btn-outline-warning">
                                     <i class="fas fa-chevron-left"></i>
                                     Voltar
                                 </a>
