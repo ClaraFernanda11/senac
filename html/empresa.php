@@ -6,7 +6,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 
 $fieldAndValues = [
-    'nome_fantasia' => 'ceu',
+    'nome_fantasia' => 'lua',
     'cnpj' => '1',
     'data_de_nascimento' => '2001-01-05',
     'inscricao_estadual' => '1'

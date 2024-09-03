@@ -5,7 +5,7 @@ use app\database\builder\UpdateQuery;
 require __DIR__ . '/../vendor/autoload.php';
 
 $fieldAndValues = [
-    'nome' => 'ciencia',
+    'nome' => 'matematica',
     'ativo' => 'true'
 ];
 

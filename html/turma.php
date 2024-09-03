@@ -5,7 +5,7 @@ use app\database\builder\UpdateQuery;
 require __DIR__ . '/../vendor/autoload.php';
 
 $fieldAndValues = [
-    'quantidade_de_alunos' => '45',
+    'quantidade_de_alunos' => '30',
     'data_de_inicio' => '2024.01.22',
     'data_de_fim' => '2024.06.03'
 ];
