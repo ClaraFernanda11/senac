@@ -24,6 +24,7 @@ class ComposerStaticInit8d070178755c320c69f93ee4800660ef
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'app\\database\\Connection' => __DIR__ . '/../..' . '/app/database/Connection.php',
         'app\\database\\builder\\InsertQuery' => __DIR__ . '/../..' . '/app/database/builder/InsertQuery.php',
+        'app\\database\\builder\\UpdateQuery' => __DIR__ . '/../..' . '/app/database/builder/UpdateQuery.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
