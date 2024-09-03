@@ -5,14 +5,13 @@ use app\database\builder\UpdateQuery;
 require __DIR__ . '/../vendor/autoload.php';
 
 $fieldAndValues = [
-    'quantidade_de_alunos' => '45',
-    'data_de_inicio' => '2024.01.22',
-    'data_de_fim' => '2024.06.03'
+    'nome' => 'ciencia',
+    'ativo' => 'true'
 ];
 
-$IsUpdate = UpdateQuery::tabela('turma')
+$IsUpdate = UpdateQuery::tabela('disciplina')
     ->set($fieldAndValues)
-    ->where('id', '=', 71)
+    ->where('id', '=', 101)
     ->update();
 
 var_dump($IsUpdate);
