@@ -17,4 +17,4 @@ $IsUpdate = UpdateQuery::tabela('empresa')
     ->where('id', '=', 68)
     ->update();
 
-var_dump($IsUpdate);
+var_dump($IsUpdate); 
