@@ -9,4 +9,5 @@ return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'app\\database\\Connection' => $baseDir . '/app/database/Connection.php',
     'app\\database\\builder\\InsertQuery' => $baseDir . '/app/database/builder/InsertQuery.php',
+    'app\\database\\builder\\UpdateQuery' => $baseDir . '/app/database/builder/UpdateQuery.php',
 );
