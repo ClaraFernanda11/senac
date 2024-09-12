@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+
 <body>
     <div class="container">
         <div class="row">
@@ -37,7 +38,7 @@
                                 <tr>
                                     <th>Código</th>
                                     <th>Nome</th>
-                                    <th>CPF</th>
+                                    <th>CPF</th> 
                                     <th>RG</th>
                                     <th>Data nascimento</th>
                                     <th>Ação</th>
@@ -90,7 +91,7 @@
                                     <td>29/01/2008</td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic exemple">
-                                        <a href="/aluno.php?id=2" class="btn btn-outline-warning">
+                                            <a href="/aluno.php?id=2" class="btn btn-outline-warning">
                                                 <i class="fas fa-edit"> </i>
                                                 Editar
                                             </a>
@@ -111,4 +112,5 @@
     <script src="/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 </body>
+
 </html>
