@@ -31,7 +31,8 @@
                                     </div>
                                     <div class="mb-3">
                                         <div>Senha:</div>
-                                        <input type="password" id="password" name="password" class="form-control" required>
+                                        <input type="password" id="password" name="password" class="form-control"
+                                            required>
                                     </div>
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-primary">
@@ -46,7 +47,8 @@
                                         data-bs-target="#registerModal">Cadastre-se</a></small>
                                 <br>
                                 <small>Esqueceu a senha?<a href="#" data-bs-toggle="modal"
-                                        data-bs-target="#changePasswordModal">Mudar Senha</a></small>
+                                        data-bs-target="#changePasswordModal">Mudar
+                                        Senha</a></small>
                             </div>
                         </div>
                     </div>
@@ -64,7 +66,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="registerForm">
+                    <form id="registerForm" action="/register" method="POST">
                         <div class="mb-3">
                             <label for="regUsername" class="form-label">Usuário:</label>
                             <input type="text" id="regUsername" name="username" class="form-control" required>
@@ -79,7 +81,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="regConfirmPassword" class="form-label">Confirmar Senha:</label>
-                            <input type="password" id="regConfirmPassword" name="confirm_password" class="form-control" required>
+                            <input type="password" id="regConfirmPassword" name="confirm_password" class="form-control"
+                                required>
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary">Cadastrar</button>
@@ -92,7 +95,8 @@
     </div>
 
     <!-- Modal para Mudar Senha -->
-    <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+    <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -103,7 +107,8 @@
                     <form action="/change-password" method="POST">
                         <div class="mb-3">
                             <label for="currentPassword" class="form-label">Senha Atual:</label>
-                            <input type="password" id="currentPassword" name="current_password" class="form-control" required>
+                            <input type="password" id="currentPassword" name="current_password" class="form-control"
+                                required>
                         </div>
                         <div class="mb-3">
                             <label for="newPassword" class="form-label">Nova Senha:</label>
@@ -111,7 +116,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="confirmNewPassword" class="form-label">Confirmar Nova Senha:</label>
-                            <input type="password" id="confirmNewPassword" name="confirm_new_password" class="form-control" required>
+                            <input type="password" id="confirmNewPassword" name="confirm_new_password"
+                                class="form-control" required>
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary">Mudar Senha</button>
@@ -137,40 +143,32 @@
                 confirm_password: formData.get('confirm_password')
             };
 
-            console.log("Dados a serem enviados:", data); // Log para verificar os dados
-
-            // Enviar dados usando XMLHttpRequest
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', '/register', true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-
-            xhr.onload = function () {
-                if (xhr.status >= 200 && xhr.status < 300) {
-                    const result = JSON.parse(xhr.responseText);
+            // Enviar dados usando fetch
+            fetch('cadastro.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data) // Enviar dados como JSON
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json(); // Processar a resposta JSON
+                    } else {
+                        throw new Error('Erro na requisição');
+                    }
+                })
+                .then(result => {
                     if (result.status) { // Verificando apenas o status
                         document.getElementById('alertContainer').innerHTML = `<div class="alert alert-success" role="alert">${result.message}</div>`;
-                        document.getElementById('registerForm').reset(); // Limpar o formulário
+                        this.reset(); // Limpar o formulário
                     } else {
                         document.getElementById('alertContainer').innerHTML = `<div class="alert alert-danger" role="alert">${result.message}</div>`;
                     }
-                } else {
-                    document.getElementById('alertContainer').innerHTML = `<div class="alert alert-danger" role="alert">Erro ao cadastrar. Tente novamente.</div>`;
-                }
-            };
+                });
 
-            xhr.onerror = function () {
-                document.getElementById('alertContainer').innerHTML = `<div class="alert alert-danger" role="alert">Erro ao cadastrar. Tente novamente.</div>`;
-            };
-
-            try {
-                xhr.send(JSON.stringify(data)); // Enviar dados como JSON
-            } catch (error) {
-                console.error('Erro ao enviar os dados:', error);
-                document.getElementById('alertContainer').innerHTML = `<div class="alert alert-danger" role="alert">Erro ao enviar os dados. Tente novamente.</div>`;
-            }
         });
     </script>
 </body>
 
 </html>
- 
