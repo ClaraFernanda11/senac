@@ -13,18 +13,14 @@ class InsertQuery
         $classe_atual->table = $tableName;
         return $classe_atual;
     }
-    public function save(array $valores = []): bool
+    public function save(array $valores = [])
     {
-        try {
-            $keys = implode(',', array_keys($valores));
-            $params = ':' . implode(',:', array_keys($valores));
-            $sql = "insert into {$this->table} ({$keys}) values ({$params})";
-            $con = Connection::open();
-            $prepare = $con->prepare($sql);
-            return $prepare->execute($valores);
-        } catch (\PDOException $e) {
-            var_dump($e->getMessage());
-            throw new \Exception("Restrição :" . $e->getMessage(), 1);
-        }
+        $campos = implode(',', array_keys($valores));
+        $parametros = ':' . implode(',:', array_keys($valores));
+        $sql = "insert into {$this->table} ($campos) values ($parametros)";
+        $connection = Connection::open();
+        $prepare = $connection->prepare($sql);
+        return $prepare->execute($valores);
     }
+    
 }

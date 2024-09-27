@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center" style="margin-top: 50px;">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="text-center">Login</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-12">
+                            <div class="alert alert-warning" role="alert" id="alert">
+                                Todos os campos sinalizados com <span class="text-danger">*</span> são de preenchimento
+                                obrigatórios
+                            </div>
+                            <div class="card-body">
+                                <form action="/login" method="POST">
+                                    <div class="mb-3">
+                                        <div>Usuário:</div>
+                                        <input type="text" id="username" name="username" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div>Senha:</div>
+                                        <input type="password" id="password" name="password" class="form-control" required>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-sign-in-alt"></i>
+                                            Entrar
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card-footer text-center">
+                                <small>Não tem uma conta? <a href="#" data-bs-toggle="modal"
+                                        data-bs-target="#registerModal">Cadastre-se</a></small>
+                                <br>
+                                <small>Esqueceu a senha?<a href="#" data-bs-toggle="modal"
+                                        data-bs-target="#changePasswordModal">Mudar Senha</a></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Cadastro -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Cadastro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="mb-3">
+                            <label for="regUsername" class="form-label">Usuário:</label>
+                            <input type="text" id="regUsername" name="username" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="regEmail" class="form-label">Email:</label>
+                            <input type="email" id="regEmail" name="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="regPassword" class="form-label">Senha:</label>
+                            <input type="password" id="regPassword" name="password" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="regConfirmPassword" class="form-label">Confirmar Senha:</label>
+                            <input type="password" id="regConfirmPassword" name="confirm_password" class="form-control" required>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                        </div>
+                    </form>
+                    <div id="alertContainer"></div> <!-- Container para mensagens -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Mudar Senha -->
+    <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="changePasswordModalLabel">Mudar Senha</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/change-password" method="POST">
+                        <div class="mb-3">
+                            <label for="currentPassword" class="form-label">Senha Atual:</label>
+                            <input type="password" id="currentPassword" name="current_password" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newPassword" class="form-label">Nova Senha:</label>
+                            <input type="password" id="newPassword" name="new_password" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmNewPassword" class="form-label">Confirmar Nova Senha:</label>
+                            <input type="password" id="confirmNewPassword" name="confirm_new_password" class="form-control" required>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Mudar Senha</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            const formData = new FormData(this);
+            const data = {
+                nome: formData.get('username'), // O nome será igual ao valor do campo de usuário
+                username: formData.get('username'),
+                email: formData.get('email'),
+                password: formData.get('password'),
+                confirm_password: formData.get('confirm_password')
+            };
+
+            console.log("Dados a serem enviados:", data); // Log para verificar os dados
+
+            // Enviar dados usando XMLHttpRequest
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/register', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
+            xhr.onload = function () {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    const result = JSON.parse(xhr.responseText);
+                    if (result.status) { // Verificando apenas o status
+                        document.getElementById('alertContainer').innerHTML = `<div class="alert alert-success" role="alert">${result.message}</div>`;
+                        document.getElementById('registerForm').reset(); // Limpar o formulário
+                    } else {
+                        document.getElementById('alertContainer').innerHTML = `<div class="alert alert-danger" role="alert">${result.message}</div>`;
+                    }
+                } else {
+                    document.getElementById('alertContainer').innerHTML = `<div class="alert alert-danger" role="alert">Erro ao cadastrar. Tente novamente.</div>`;
+                }
+            };
+
+            xhr.onerror = function () {
+                document.getElementById('alertContainer').innerHTML = `<div class="alert alert-danger" role="alert">Erro ao cadastrar. Tente novamente.</div>`;
+            };
+
+            try {
+                xhr.send(JSON.stringify(data)); // Enviar dados como JSON
+            } catch (error) {
+                console.error('Erro ao enviar os dados:', error);
+                document.getElementById('alertContainer').innerHTML = `<div class="alert alert-danger" role="alert">Erro ao enviar os dados. Tente novamente.</div>`;
+            }
+        });
+    </script>
+</body>
+
+</html>
+ 

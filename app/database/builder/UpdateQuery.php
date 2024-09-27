@@ -6,45 +6,17 @@ use app\database\Connection;
 
 class UpdateQuery
 {
-
     private string $table;
     private array $fieldsAndValues = [];
     private array $where = [];
     private array $binds = [];
-    private function createQuery()
-    {
-        if (!$this->table) {
-            throw new \Exception("A consulta precisa invocar o método table.");
-        }
-        if (!$this->fieldsAndValues) {
-            throw new \Exception("A consulta precisa de dados para realizar a atualização");
-        }
-        $query = '';
-        $query = "update {$this->table} set ";
-        foreach ($this->fieldsAndValues as $field => $value) {
-            $query .= "{$field} = :{$field},";
-            $this->binds[$field] = $value;
-        }
-        $query = rtrim($query, ',');
-        $query .= (isset($this->where) and (count($this->where) > 0)) ? ' where ' . implode('', $this->where) : '';
-        return $query;
-    }
     public function executeQuery($query)
     {
-        try {
-            # Estabelece a conexão com o banco de dados.
-            $connection = Connection::open();
-            # Prepara a query SQL para execução.
-            $prepare = $connection->prepare($query);
-            # Executa a query preparada, passando os valores que
-            # foram vinculados às placeholders.
-            return $prepare->execute($this->binds ?? []);
-        } catch (\PDOException $e) {
-            var_dump($e->getMessage());
-        }
+        $connection = Connection::open();
+        $prepare = $connection->prepare($query);
+        return $prepare->execute($this->binds ?? []);
     }
-
-    public function where(string $field, string $operator, string |int $value, ?string $logic = null): self
+    public function where(string $field, string $operator, string|int $value, ?string $logic = null)
     {
         $placeHolder = '';
         $placeHolder = $field;
@@ -55,21 +27,38 @@ class UpdateQuery
         $this->binds[$placeHolder] = $value;
         return $this;
     }
-
-    public static function tabela(string $table): self
+    private function createQuery()
     {
-        $self = new self;
-        $self->table = $table;
-        return $self;
+        if (!$this->table) {
+            throw new \Exception("A consulta precisa invocar o método table.");
+        }
+        if (!$this->fieldsAndValues) {
+            throw new \Exception("A consulta precisa dos dados para realizar a atualização.");
+        }
+        $query = '';
+        $query = "update {$this->table} set ";
+        foreach ($this->fieldsAndValues as $field => $value) {
+            $query .= "{$field} = :{$field},";
+            $this->binds[$field] = $value;
+        }
+        $query = rtrim($query, ',');
+        $query .= (isset($this->where) and (count($this->where) > 0)) ? ' where ' . implode(' ', $this->where) : '';
+        return $query;
     }
-    public function update(): bool
+    public function update()
     {
         $query = $this->createQuery();
         try {
             return $this->executeQuery($query);
         } catch (\PDOException $e) {
-            throw new \Exception("Restrição: {$e->getMessage()}");
+            throw new \Exception("Restrição: {$e->getMessage()}, SQL: " . $query);
         }
+    }
+    public static function table(string $table)
+    {
+        $self = new self;
+        $self->table = $table;
+        return $self;
     }
     public function set(array $fieldsAndValues)
     {
